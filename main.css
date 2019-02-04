@@ -1,5 +1,7 @@
 body {
-    background-color: dimgrey;
+    background: url("starsky.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 li {
@@ -13,6 +15,7 @@ a {
     font-weight: 100;
     font-size: 70%;
     color: #f5473a;
+    text-shadow: #c81df3 0.1em 0.1em 0.2em;
 }
 
 a:hover {
@@ -24,12 +27,22 @@ h1 {
     font-family: 'Orbitron', sans-serif;
     font-weight: 100;
     color: white;
+    text-shadow: white 0.1em 0.1em 0.2em;
     text-align: center;
     padding: 1em;
 }
 
 .listAi {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 1px 1px 12px white;
     border: 1px solid white;
     border-radius: 5px;
     padding: 2px 2px 10px 5px;
+}
+
+.infoDiv {
+    box-shadow: 1px 1px 12px white;
+    color: #c81df3;
+    text-align: center;
+    border: 1px solid #9559bd;
 }

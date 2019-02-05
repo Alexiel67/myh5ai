@@ -21,7 +21,7 @@ function getFile(){
             {
                 $nb_fichier++;
                 echo '<div class="listAi">
-                    <li class="' .getTypeExt($fichier). '"><a href="./home' . $fichier . '"  style="color:'. $color.'"> ' . $fichier . '  ' . $octet .' </a></li>
+                    <li class="far '.getTypeExt($fichier).'"><a href="./home' . $fichier . '"  style="color:'. $color.'"> ' . $fichier . '  ' . $octet .' </a></li>
                   </div>';
             }
         }
@@ -49,7 +49,7 @@ function getTypeExt($file) {
     $type = pathinfo($file);
 
     if (!isset($type['extension'])) {
-        return "far fa-folder fa-2x";
+        return "fa-folder fa-2x";
     }
 
     $fileExtension = $type['extension'];
@@ -57,25 +57,17 @@ function getTypeExt($file) {
     switch($fileExtension)
     {
         case "txt":
-            return "far fa-file-alt fa-2x";
+            return "fa-file-alt fa-2x";
             break;
 
         case "pdf":
-            return "far fa-file-pdf fa-2x";
-            break;
-
-        case "php":
-            return "fab fa-php fa-2x";
-            break;
-
-        case "html":
-            return "fab fa-html5";
+            return "fa-file-pdf fa-2x";
             break;
 
         case "jpg":
         case "jpeg":
         case "png":
-            return "far fa-file-image fa-2x";
+            return "fa-file-image fa-2x";
             break;
 
         case "": // Handle file extension for files ending in '.'

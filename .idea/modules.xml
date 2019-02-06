@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/myH5Ai.iml" filepath="$PROJECT_DIR$/.idea/myH5Ai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/testh5ai.iml" filepath="$PROJECT_DIR$/.idea/testh5ai.iml" />
     </modules>
   </component>
 </project>

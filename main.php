@@ -1,48 +1,54 @@
 <?php
-$color="";
-function getFile(){
+$color = '';
+function scanFile()
+{
     $nb_fichier = 0;
     echo '<ul>';
 
-    if($dossier = opendir('./home'))
-    {
-        while(false !== ($fichier = readdir($dossier)))
-        {
-            $realfile = './home/' . $fichier;
-            if (is_file($realfile)){
-                $color = '#4b1189';
-                $octet = "( " . filesize($realfile) . " octets )";
-            }
-            else {
-                $color = '#122ab0';
-                $octet = '';
-            }
-            if($fichier != '.' && $fichier != '..' && $fichier != 'index.php')
-            {
-                $nb_fichier++;
-                echo '<div class="listAi">
-                    <li class="' .getTypeExt($fichier). '"><a href="./home' . $fichier . '"  style="color:'. $color.'"> ' . $fichier . '  ' . $octet .' </a></li>
-                  </div>';
+    $path = ($_SERVER['REQUEST_URI']);
+    $parts = explode('myh5ai', $path);
+    array_shift($parts);
+    $path = implode('/', $parts);
+    //echo $path;
+
+    $dirname = './home' . $path;
+
+
+        $dir = opendir($dirname);
+
+        while ($file = readdir($dir)) {
+            if ($file != '.' && $file != '..') {
+                if (is_file($dirname . $file)) {
+                    $nb_fichier++;
+                    $octet = "( " . filesize($dirname) . " octets )";
+                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $dirname . $file . '" style="color:#4b1189"> ' . $file . '  ' . $octet . ' </a></li></div>';
+                }
+                else {
+                    $nb_fichier++;
+                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $_SERVER['REQUEST_URI'] . $file . '/" style="color:#122ab0"> ' . $file . '</a></li></div>';
+                }
             }
         }
 
-        echo '</ul><br />';
+        echo '</ul>';
 
-        echo '
+    echo '
                 <div class="row">  
                     <div class="col-md-2"></div>
                     <div class="col-md-8 alert alert-light infoDiv">
                         Il y a <strong>' . $nb_fichier .'</strong> élément(s) dans le dossier !
                     </div>
                     <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-outline-light backButton">Back</button>
+                    </div>
+                    <div class="col-md-5"></div>
                 </div>';
 
-        closedir($dossier);
-
-    }
-    else
-
-        echo 'Le dossier n\' a pas pu être ouvert';
+    closedir($dir);
 }
 
 function getTypeExt($file) {
@@ -82,6 +88,6 @@ function getTypeExt($file) {
         default: // Handle no file extension
             break;
     }
-   // echo $fileExtension . '<br/>'; // Returns .html
+    // echo $fileExtension . '<br/>'; // Returns .html
 }
-getFile();
+scanFile();

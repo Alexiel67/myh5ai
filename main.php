@@ -5,13 +5,25 @@ function scanFile()
     $nb_fichier = 0;
     echo '<ul>';
 
-    $path = ($_SERVER['REQUEST_URI']);
-    $parts = explode('myh5ai', $path);
-    array_shift($parts);
-    $path = implode('/', $parts);
-    //echo $path;
+    $link = "http://$_SERVER[HTTP_HOST]/myh5ai/";
 
-    $dirname = './home' . $path;
+    $path = ($_SERVER['REQUEST_URI']);
+    $parts = array_filter(explode('/', $path));
+    array_shift($parts);
+    $lastLink = $parts;
+    array_pop($lastLink);
+    $lastLink = implode($lastLink, '/');
+
+    $path = implode('/', $parts);
+    echo '<div class="row">  
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 alert alert-light infoDiv">
+                        ' . $path . '
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>';
+
+    $dirname = './home/' . $path;
 
 
         $dir = opendir($dirname);
@@ -42,8 +54,11 @@ function scanFile()
                 </div>
                 <div class="row">
                     <div class="col-md-5"></div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-outline-light backButton">Back</button>
+                    <div class="col-md-1">
+                        <a href="'. $link . $lastLink . '"><button type="button" class="btn btn-outline-light backButton"><span class="arrow">&larr;</span></button></a>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-outline-light backButton"><span class="arrow">&rarr;</span></button>
                     </div>
                     <div class="col-md-5"></div>
                 </div>';
@@ -90,4 +105,22 @@ function getTypeExt($file) {
     }
     // echo $fileExtension . '<br/>'; // Returns .html
 }
+
+/*function filDariane($lien)
+{
+    $filDariane = "";
+
+    while( $lien != "./http://localhost/myh5ai" )
+    {
+        $lien = explode('/',$lien);
+        if( count($lien) > 1 ) $dernier_dossier = array_pop($lien);
+        $lien = implode('/',$lien);
+
+        $filDariane = " > "."<a href='/home . $lien . "/".$dernier_dossier.">".$dernier_dossier.'</a>".$filDariane;
+    }
+    $filDariane = "<a href='/myh5ai'>Racine</a>".$filDariane;
+
+    echo $filDariane."<br />";
+}*/
 scanFile();
+/*filDariane("./http://localhost/myh5ai");*/

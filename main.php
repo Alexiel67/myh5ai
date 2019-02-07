@@ -32,8 +32,9 @@ function scanFile()
             if ($file != '.' && $file != '..') {
                 if (is_file($dirname . $file)) {
                     $nb_fichier++;
-                    $octet = "( " . filesize($dirname) . " octets )";
-                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $dirname . $file . '" style="color:#4b1189"> ' . $file . '  ' . $octet . ' </a></li></div>';
+                    $octet = "( " . filesize($dirname . '/' . $file) . " octets )";
+                    $modifDate = date ("F d Y H:i:s.", filemtime($dirname . '/' . $file));
+                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $dirname . $file . '" style="color:#4b1189"> ' . $file . '  ' . $octet . ' <span class="modifDate"> ' . $modifDate . ' </span></a></li></div>';
                 }
                 else {
                     $nb_fichier++;

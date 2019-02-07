@@ -61,3 +61,8 @@ h1 {
     font-size: 1.5em;
     text-align: center;
 }
+
+.modifDate {
+    font-size: 60%;
+    color: #1e1a21;
+}

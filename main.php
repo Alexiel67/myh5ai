@@ -34,7 +34,7 @@ function scanFile()
                     $nb_fichier++;
                     $octet = "( " . filesize($dirname . '/' . $file) . " octets )";
                     $modifDate = date ("F d Y H:i:s.", filemtime($dirname . '/' . $file));
-                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $dirname . $file . '" style="color:#4b1189"> ' . $file . '  ' . $octet . ' <span class="modifDate"> ' . $modifDate . ' </span></a></li></div>';
+                    echo '<div class="listAi"><li class="' . getTypeExt($file) . '"><a href="' . $dirname . '/' . $file . '" style="color:#4b1189"> ' . $file . '  ' . $octet . ' <span class="modifDate"> ' . $modifDate . ' </span></a></li></div>';
                 }
                 else {
                     $nb_fichier++;

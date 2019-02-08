@@ -63,6 +63,8 @@ h1 {
 }
 
 .modifDate {
-    font-size: 60%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 70%;
     color: #1e1a21;
+    text-shadow: #e7b5f4 0.1em 0.1em 0.2em;
 }

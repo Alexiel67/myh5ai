@@ -30,7 +30,7 @@ function scanFile()
 
         while ($file = readdir($dir)) {
             if ($file != '.' && $file != '..') {
-                if (is_file($dirname . $file)) {
+                if (is_file($dirname . '/' . $file)) {
                     $nb_fichier++;
                     $octet = "( " . filesize($dirname . '/' . $file) . " octets )";
                     $modifDate = date ("F d Y H:i:s.", filemtime($dirname . '/' . $file));
